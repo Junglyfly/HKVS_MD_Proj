@@ -1,0 +1,8 @@
+﻿  pch.cpp
+  dllmain.cpp
+    正在创建库 E:\VS HKVS\Python_hkvs_2meathd\Hk_dll_lib\HK_dll_lib\x64\Release\HK_dll_lib.lib 和对象 E:\VS HKVS\Python_hkvs_2meathd\Hk_dll_lib\HK_dll_lib\x64\Release\HK_dll_lib.exp
+  正在生成代码
+  Previous IPDB not found, fall back to full compilation.
+  All 3 functions were compiled because no usable IPDB/IOBJ from previous compilation was found.
+  已完成代码的生成
+  HK_dll_lib.vcxproj -> E:\VS HKVS\Python_hkvs_2meathd\Hk_dll_lib\HK_dll_lib\x64\Release\HK_dll_lib.dll

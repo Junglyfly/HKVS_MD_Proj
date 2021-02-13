@@ -1,0 +1,4 @@
+E:\VS HKVS\Python_hkvs_2meathd\Hk_dll_lib\HK_dll_lib\x64\Debug\HK_dll_lib.dll
+E:\VS HKVS\Python_hkvs_2meathd\Hk_dll_lib\HK_dll_lib\x64\Debug\HK_dll_lib.pdb
+E:\VS HKVS\Python_hkvs_2meathd\Hk_Md_Proj\HK_dll_lib_Proj\x64\Debug\HK_dll_lib.dll
+E:\VS HKVS\Python_hkvs_2meathd\Hk_Md_Proj\HK_dll_lib_Proj\x64\Debug\HK_dll_lib.pdb
