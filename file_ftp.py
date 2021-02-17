@@ -3,7 +3,7 @@ import os
 import sys
 import time
 import socket
-
+import configparser
 
 class MyFTP:
     def __init__(self, host, port=21):
@@ -270,11 +270,28 @@ class MyFTP:
         return file_arr
 
     
+config = configparser.ConfigParser() # 类实例化
+# 配置文件路径
+Ini_File_path = r'./System_Configuration_File.ini'
 
-if __name__ == "__main__":
-    my_ftp = MyFTP("47.107.236.236")
-    #my_ftp.set_pasv(False)
-    my_ftp.login("junglyfly", "junglyfly")
+# 第一种读取ini文件方式,通过read方法
+config.read(Ini_File_path,encoding='utf-8')
+ALL_Cam_Rec_Number = int(config['Camera_Recording']['ALL_Cam_Rec_Number'])
+print(ALL_Cam_Rec_Number)
+print(type(ALL_Cam_Rec_Number))
+
+
+FTP_IP = config['FTP']['FTP_Ip']
+FTP_Port = int(config['FTP']['FTP_Port'])
+FTP_username = config['FTP']['FTP_Username']
+FTP_password = config['FTP']['FTP_Password']
+
+print(FTP_IP,FTP_Port,FTP_username,FTP_password)
+
+
+My_ftp = MyFTP(FTP_IP,FTP_Port)                 #创建我的FTP对象
+My_ftp.login(FTP_username,FTP_password)  #登录FTP
+
 
     # 下载单个文件
     #my_ftp.download_file("/home/BG_2019_05_22_16_04_54_Camera6-0.mp4", "/BG_2019_05_22_16_04_54_Camera6-0.mp4") #FTP服务器目录   本地目录
@@ -286,10 +303,10 @@ if __name__ == "__main__":
     # my_ftp.upload_file("G:/ftp_test/Release/XTCLauncher.apk", "/App/AutoUpload/ouyangpeng/I12/Release/XTCLauncher.apk")
 
     # 上传目录
-    my_ftp.upload_file_tree("D:/MD_HK_OutPut_Video/2021/202102/20210204/001/", "/MD_HK_OutPut_Video/2021/202102/20210204/001/")
-    print("第二个FTP")
-    my_ftp.upload_file_tree("D:/MD_HK_OutPut_Video/2021/202102/20210204/003/", "/MD_HK_OutPut_Video/2021/202102/20210204/003/")
-    my_ftp.close()
+My_ftp.upload_file_tree("D:/MD_HK_OutPut_Video/2021/202102/20210204/001/", "/MD_HK_OutPut_Video/2021/202102/20210204/001/")
+print("第二个FTP")
+My_ftp.upload_file_tree("D:/MD_HK_OutPut_Video/2021/202102/20210204/003/", "/MD_HK_OutPut_Video/2021/202102/20210204/003/")
+My_ftp.close()
 
 
 

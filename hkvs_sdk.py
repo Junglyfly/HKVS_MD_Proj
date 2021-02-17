@@ -359,11 +359,11 @@ while True:
     for i_temp in range(ALL_Cam_Rec_Number):
         time.sleep(6)
         #登录摄像头
-        print("i_temp",i_temp)
+        print("i_temp = ",i_temp)
         user_id[i_temp] = HK_dll.HK_USER_Login(ALL_Camera_Num[i_temp].ip,ALL_Camera_Num[i_temp].port,ALL_Camera_Num[i_temp].username,ALL_Camera_Num[i_temp].password)
 
-        if ftp_status == 0 :
-            My_ftp.login(FTP_username,FTP_password)  #登录FTP
+        #if ftp_status == 0 :
+        My_ftp.login(FTP_username,FTP_password)  #登录FTP
         ftp_status = 1
         print(".....")
         #音频文件目录结构：D:\MD_recording\2021\202102\20210202\001
@@ -460,6 +460,7 @@ while True:
                         #登录摄像头
                         user_id[i_temp] = HK_dll.HK_USER_Login(ALL_Camera_Num[i_temp].ip,ALL_Camera_Num[i_temp].port,ALL_Camera_Num[i_temp].username,ALL_Camera_Num[i_temp].password)
                         print("重新登录摄像头")
+                        raise Exception('下载失败！！抛出异常')
                         continue  #结束本次循环
 
                     download_flag = 0  #标志清除
@@ -478,8 +479,10 @@ while True:
                         My_ftp.upload_file_tree(dirs+"/",dirs[2:]+"/")   #将文件由FTP上传至服务器  该函数会自动略过ftp服务器中相等的文件   #某次传输异常不要紧下次继续可以传输
                     except:
                         time.sleep(1)
+                        print("FTP upload Error")
                         My_ftp.close()  #关闭FTP
-                        ftp_status = 0    
+                        #raise Exception('FTP 上传失败！！抛出异常')
+                        #ftp_status = 0    
                         continue
 
         except (RuntimeError, TypeError, NameError):
